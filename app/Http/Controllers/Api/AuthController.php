@@ -50,4 +50,14 @@ class AuthController extends Controller
         return response()->json(['error' => 'Invalid Credentials'], 401);
     }
 
+    public function logout()
+    {
+        auth() -> user() -> tokens -> each(function($token, $key){
+            $token -> delete();
+        });
+
+        return response() -> json('Logged Out succesfully', 201);
+
+    }
+
 }
