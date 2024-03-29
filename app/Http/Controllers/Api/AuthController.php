@@ -41,7 +41,7 @@ class AuthController extends Controller
             $user = Auth::user();
 
             // Genera un nuevo token de acceso
-            $token = $user->createToken('MyTokenName')->accessToken;
+            $token = $user->createToken('token')->accessToken;
 
             return response()->json(['user' => $user, 'access_token' => $token]);
         }

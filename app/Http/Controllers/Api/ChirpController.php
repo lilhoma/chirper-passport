@@ -12,8 +12,8 @@ class ChirpController extends Controller
 {
     public function index(Request $request) :JsonResponse
     {
-        $chirps = Chirp::with('user') -> latest()-> paginate(4);
-        return response() -> json(['chirps' => $chirps]);
+        $chirps = Chirp::with('user:id,name') -> latest()->get();
+        return response() -> json($chirps);
     }
 
     public function store(Request $request): JsonResponse
@@ -40,7 +40,7 @@ class ChirpController extends Controller
     {
         $this -> authorize('update', $chirp);
 
-        return response() -> json(['chirp' => $chirp]);
+        return response() -> json([$chirp]);
     }
 
 
