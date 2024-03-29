@@ -40,7 +40,7 @@ class ChirpController extends Controller
     {
         $this -> authorize('update', $chirp);
 
-        return response() -> json([$chirp]);
+        return response() -> json($chirp);
     }
 
 
